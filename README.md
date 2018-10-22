@@ -1,9 +1,7 @@
-# Spring Stream Cloud
 
 # Spring Stream Cloud Messaging using RabbitMq as Messaging Middleware
 
-
-# How is it all wired ?
+## How is it all wired ?
 
 Few lines of code is all it takes to take our messaging implementation to Prod with *Spring Cloud Stream* project from *Spring*. We can use messaging middleware as *RabbitMQ* or *Kafka*. This example is explained using *RabbitMq*
 
