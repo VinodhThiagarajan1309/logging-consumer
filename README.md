@@ -37,7 +37,7 @@ spring.cloud.stream.bindings.<Your_Exchange_Variable_Name>.group=PrefferedGroupN
 In our care the variable name is ***myExchangeName*** hence the resolved property will be like,
 
 ```
-spring.cloud.stream.bindings.myExchangeName.group=PrefferedGroupName
+spring.cloud.stream.bindings.myExchangeName.group=sampleGroup
 
 ```
 where *myExchangeName* is the name of the SINK/EXCHANGE
