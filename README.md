@@ -50,8 +50,8 @@ Likewise you can also provide a valid exchange name,
 spring.cloud.stream.bindings.<Your_Exchange_Variable_Name>.destination=exchangeName
 ```
 
-![https://i.postimg.cc/QVGjDsdB/EDg-G-Lr86-clipboard.png](EDgG_Lr86-clipboard.png)
-![https://i.postimg.cc/6qGBFTtJ/43-06-Xfps-clipboard.png](43-06Xfps-clipboard.png)
+![EDgG_Lr86-clipboard.png](https://i.postimg.cc/QVGjDsdB/EDg-G-Lr86-clipboard.png)
+![43-06Xfps-clipboard.png](https://i.postimg.cc/6qGBFTtJ/43-06-Xfps-clipboard.png)
 
 
 ### Stream Listener AKA Subscriber AKA Message Handler
