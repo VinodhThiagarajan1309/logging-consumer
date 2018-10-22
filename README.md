@@ -99,15 +99,10 @@ public static class Coordinates {
 "latitude" : 12.48 ,
 "longitude" : 38.42
 }
-
 ```
 ***OUTPUT***
 ```
-
 Received : Coordinates{latitude=12.48, longitude=38.42}
-
-
-
 ```
 
 ### Vinodh Thiagarajan @ Intersys Inc
