@@ -1,32 +1,43 @@
 package com.voam.loggingconsumer;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.messaging.Processor;
 import org.springframework.cloud.stream.messaging.Sink;
-import org.springframework.cloud.stream.messaging.Source;
+import org.springframework.integration.annotation.InboundChannelAdapter;
 import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.support.MessageBuilder;
+
+import javax.xml.transform.Source;
 
 @SpringBootApplication
-@EnableBinding({Sink.class, PreferredExchangeNameSink.class})
+@EnableBinding({ PreferredExchangeNameSink.class})
 public class LoggingConsumerApplication {
+
+    @Autowired
+    CustomSource customSource;
 
     public static void main(String[] args) {
         SpringApplication.run(LoggingConsumerApplication.class, args);
     }
 
-    @StreamListener(Sink.INPUT)
+    @StreamListener(PreferredExchangeNameSink.INPUT)
     public void handle(Person person) {
         System.out.println("Received : " + person);
+
+        FoodOrder foodOrder  = new FoodOrder();
+        foodOrder.setRestaurant("Olive Garden");
+        foodOrder.setName("Oli" + System.currentTimeMillis());
+
+       customSource.output().send(MessageBuilder.withPayload(foodOrder).build());
+
+
     }
 
-    @StreamListener(PreferredExchangeNameSink.INPUT)
-    public void handle(Coordinates coordinates) {
-        System.out.println("Received : " + coordinates);
 
-    }
 
     public static class Person {
          private String name;
@@ -47,33 +58,5 @@ public class LoggingConsumerApplication {
         }
     }
 
-    public static class Coordinates {
-        private float latitude;
 
-        public float getLatitude() {
-            return latitude;
-        }
-
-        public void setLatitude(float latitude) {
-            this.latitude = latitude;
-        }
-
-        public float getLongitude() {
-            return longitude;
-        }
-
-        public void setLongitude(float longitude) {
-            this.longitude = longitude;
-        }
-
-        private float longitude;
-
-        @Override
-        public String toString() {
-            return "Coordinates{" +
-                    "latitude=" + latitude +
-                    ", longitude=" + longitude +
-                    '}';
-        }
-    }
 }
